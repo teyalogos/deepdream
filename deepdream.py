@@ -1,3 +1,6 @@
+"""
+Modified version of Google's deep dream scripts for easier and more customized use.
+"""
 import numpy as np
 import scipy.ndimage as nd
 import PIL
