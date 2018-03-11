@@ -132,7 +132,9 @@ def run(frame, end=args.layer, folder_start=''):
     for i in range(args.deep_iterations):
         try:
             frame = deepdream(net, frame, end=end)
-            PIL.Image.fromarray(np.uint8(frame)).save(layer_dir + "/%04d.jpg"%frame_i)
+            #PIL.Image.fromarray(np.uint8(frame)).save(layer_dir + "/{}.jpg".format(frame_i))
+            # temp parameter is temporary!! it is there to ran if we're running a show
+            PIL.Image.fromarray(np.uint8(frame)).save("temp" + "/{}.jpg".format(frame_i))
         except FileNotFoundError:
             os.makedirs(layer_dir)
         except ValueError:
@@ -152,7 +154,7 @@ s = args.zoom # scale coefficient
 
 if args.layer == '?':
     for layer in net.blobs.keys():
-        print(layer)
+        print('"' + layer + '",')
 elif args.layer == 'all':
     # iterate and deep dream all layers
     layer_num = 0
